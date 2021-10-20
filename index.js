@@ -37,10 +37,12 @@ app.post('/callback', line.middleware(config), (req, res) => {
 // event handler
 function handleEvent(event) {
   if (event.type !== 'message' || event.message.type !== 'text') {
+    console.log(`user ID: ${event.source.userId}`);
     // ignore non-text-message event
     return Promise.resolve(null);
+    
   }
-  console.log(`user ID: ${event.source.userId}`);
+  
   // create a echoing text message
   const echo = { type: 'text', text: event.message.text };
 
@@ -52,7 +54,7 @@ function handleEvent(event) {
 
 
 // listen on port
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8000;
 app.listen(port, () => {
   console.log(`listening on ${port}`);
 });

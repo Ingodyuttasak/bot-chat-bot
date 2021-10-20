@@ -4,10 +4,11 @@
   "description": "An example LINE bot just to echo messages",
   "main": "index.js",
   "scripts": {
-    "start": "node ."
+    "start": "nodemon index.js"
   },
   "dependencies": {
     "@line/bot-sdk": "^7.3.0",
-    "express": "^4.16.3"
+    "express": "^4.16.3",
+    "nodemon": "^2.0.14"
   }
 }
