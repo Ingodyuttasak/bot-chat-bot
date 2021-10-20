@@ -38,11 +38,12 @@ app.post('/callback', line.middleware(config), (req, res) => {
 function handleEvent(event) {
   if (event.type !== 'message' || event.message.type !== 'text') {
     
+    
     // ignore non-text-message event
     return Promise.resolve(null);
     
   }
-  console.log(`user ID: ${event.source.userId}`);
+  console.log(` ID: ${event}`);
   // create a echoing text message
   const echo = { type: 'text', text: event.message.text };
 
