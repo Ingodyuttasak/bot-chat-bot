@@ -14,6 +14,7 @@ const config = {
 const client = new line.Client(config);
 const app = express();
 
+app.use('/', express.static(__dirname))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:true}))
 
@@ -29,7 +30,7 @@ app.post('/webhook',(req,res)=>{
   console.log(req.body);
   
   replyToken = req.body.events[0].replyToken;
-  msg = req.body.events[0];
+  msg = req.body.events[0].message.text;
   reply(replyToken,msg);
   res.send('Nice!!!')
 })
@@ -42,7 +43,7 @@ function reply(replyToken,msg){
   }
   let body = JSON.stringify({
     replyToken: replyToken,
-    messages : 0[
+    messages : [
       {
       type: 'text',
       text :'Hello from webhook test',
